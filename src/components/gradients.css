@@ -1,0 +1,51 @@
+.gradient-1{
+    animation: slideIn 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes slideIn {
+    from {
+    top: 20%;
+    right: 20%;
+  }
+  to {
+    top: 30%;
+    right: 30%;
+  }
+}
+
+.gradient-2{
+    animation: slideIn2 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes slideIn2 {
+    from {
+    top: 20%;
+    left: 20%;
+  }
+  to {
+    top: 40%;
+    left: 40%;
+  }
+}
+
+.gradient-3{
+    animation: slideIn3 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes slideIn3 {
+    from {
+    top: 20%;
+    left: 30%;
+  }
+  to {
+    top: 20%;
+    left: 40%;
+  }
+}
+
+
+@media (max-width : 1024px) {
+    .gradient-1, .gradient-2,.gradient-3, .gradient-4{
+        animation: none;
+    }
+}

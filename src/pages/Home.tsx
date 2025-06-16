@@ -12,6 +12,8 @@ import {
   Shield,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import AnimatedContent from "@/blocks/Animations/AnimatedContent/AnimatedContent";
+import Gradients from "@/components/Gradients";
 
 const cardData = [
   {
@@ -75,11 +77,12 @@ const Home = () => {
   return (
     <>
       <div className="main">
-        <div className="hero-section flex items-center justify-center flex-col h-[60vh] md:h-[80vh] w-full gap-6">
+        <div className="hero-section relative flex items-center justify-center flex-col h-[60vh] md:h-[80vh] w-full gap-6 px-2 md:p-0">
+          <Gradients/>
           <div style={{ position: "relative" }}>
             <SplitText
               text="Your personal growth companion"
-              className="text-4xl font-semibold text-center"
+              className="text-3xl md:text-4xl font-semibold text-center"
               delay={100}
               duration={2.5}
               ease="elastic.out(1,0.3)"
@@ -109,9 +112,9 @@ const Home = () => {
             </Link>
           </Magnet>
         </div>
-        <div className="bg-gray-100 p-8 flex items-center flex-col justify-center gap-12">
-          <div className="flex flex-col w-full items-center justify-center text-center gap-2">
-            <h1 className="text-2xl font-bold">Discover Your Best Self</h1>
+        <div className="p-8 flex items-center flex-col justify-center gap-12 relative">
+          <div className="flex flex-col w-full items-center justify-center text-center gap-4">
+            <h1 className="text-2xl md:text-3xl font-bold">Discover Your Best Self</h1>
             <p className="text-lg w-full leading-6 text-gray-500">
               Our app is packed with features designed to help you understand
               yourself better and build lasting positive habits.
@@ -119,24 +122,33 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:px-20 w-full">
             {cardData.map((item, index) => (
-              <div
-                className="card w-fit border-[1px] border-gray-300 p-6 flex flex-col items-start justify-start gap-4 rounded-xl select-none"
-                key={index}
+              <AnimatedContent
+                distance={100}
+                direction="vertical"
+                reverse={false}
+                duration={1.2}
+                threshold={0.1}
+                delay={0}
               >
-                <div className="icon bg-black p-2 text-white rounded-full w-fit">
-                  {item.icon}
+                <div
+                  className="card w-fit h-[250px] border-[1px] border-gray-300 p-6 flex flex-col items-start justify-start gap-4 rounded-xl select-none"
+                  key={index}
+                >
+                  <div className="icon bg-black p-2 text-white rounded-full w-fit">
+                    {item.icon}
+                  </div>
+                  <div className="heading text-xl font-semibold">
+                    {item.heading}
+                  </div>
+                  <div className="description text-md font-light">
+                    {item.description}
+                  </div>
                 </div>
-                <div className="heading text-xl font-semibold">
-                  {item.heading}
-                </div>
-                <div className="description text-md font-light">
-                  {item.description}
-                </div>
-              </div>
+              </AnimatedContent>
             ))}
           </div>
         </div>
-        <div className="pricing p-8 flex flex-col items-center justify-center gap-12">
+        <div className="pricing p-8 flex flex-col items-center justify-center gap-12 relative">
           <div className="text-center flex flex-col items-center justify-center gap-4">
             <h1 className="text-3xl font-bold">
               Simple, Transparent
@@ -148,6 +160,14 @@ const Home = () => {
             </p>
           </div>
           <div className="flex items-center justify-center flex-wrap gap-4">
+            <AnimatedContent
+                distance={100}
+                direction="vertical"
+                reverse={false}
+                duration={1.2}
+                threshold={0.1}
+                delay={0}
+              >
             <div className="relative free h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8">
               <div className="">
                 <h2 className="text-xl font-bold">Free</h2>
@@ -182,6 +202,15 @@ const Home = () => {
                 Get Started Free
               </Link>
             </div>
+            </AnimatedContent>
+            <AnimatedContent
+                distance={100}
+                direction="vertical"
+                reverse={false}
+                duration={1.2}
+                threshold={0.1}
+                delay={0}
+              >
             <div className="relative">
               <GlowEffect
                 colors={["#0894FF", "#C959DD", "#FF2E54", "#FF9004"]}
@@ -226,6 +255,15 @@ const Home = () => {
                 </Link>
               </div>
             </div>
+            </AnimatedContent>
+            <AnimatedContent
+                distance={100}
+                direction="vertical"
+                reverse={false}
+                duration={1.2}
+                threshold={0.1}
+                delay={0}
+              >
             <div className="relative annual h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8">
               <div className="">
                 <h2 className="text-xl font-bold">Annual</h2>
@@ -263,6 +301,7 @@ const Home = () => {
                 Go Annual
               </Link>
             </div>
+            </AnimatedContent>
           </div>
         </div>
         <div className="footer h-16 border-t-[1px] border-gray-300 flex items-center justify-center font-light">
