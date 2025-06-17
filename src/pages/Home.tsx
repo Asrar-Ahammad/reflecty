@@ -6,6 +6,7 @@ import {
   Brain,
   Check,
   Flower,
+  Leaf,
   Network,
   Pen,
   Settings,
@@ -14,6 +15,15 @@ import {
 import { Link } from "react-router-dom";
 import AnimatedContent from "@/blocks/Animations/AnimatedContent/AnimatedContent";
 import Gradients from "@/components/Gradients";
+
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "../../components/motion-primitives/accordion";
+import { ChevronRight } from "lucide-react";
+import { faqs } from "./data/faqs";
 
 const cardData = [
   {
@@ -73,21 +83,22 @@ const annual = [
   "Early access to new features",
 ];
 
+
 const Home = () => {
   return (
     <>
       <div className="main">
         <div className="hero-section relative flex items-center justify-center flex-col h-[60vh] md:h-[80vh] w-full gap-6 px-2 md:p-0">
-          <Gradients/>
-          <div style={{ position: "relative" }}>
+          <Gradients />
+          <div style={{ position: "relative" }} className="h-fit">
             <SplitText
               text="Your personal growth companion"
-              className="text-3xl md:text-4xl font-semibold text-center"
+              className="text-3xl md:text-4xl font-semibold"
               delay={100}
               duration={2.5}
               ease="elastic.out(1,0.3)"
               splitType="words"
-              from={{ opacity: 0, y: 40 }}
+              from={{ opacity: 0, y: 20 }}
               to={{ opacity: 1, y: 0 }}
               threshold={0.1}
               rootMargin="-100px"
@@ -112,9 +123,11 @@ const Home = () => {
             </Link>
           </Magnet>
         </div>
-        <div className="p-8 flex items-center flex-col justify-center gap-12 relative">
+        <div className="features p-8 flex items-center flex-col justify-center gap-12 relative">
           <div className="flex flex-col w-full items-center justify-center text-center gap-4">
-            <h1 className="text-2xl md:text-3xl font-bold">Discover Your Best Self</h1>
+            <h1 className="text-2xl md:text-3xl font-bold">
+              Discover Your Best Self
+            </h1>
             <p className="text-lg w-full leading-6 text-gray-500">
               Our app is packed with features designed to help you understand
               yourself better and build lasting positive habits.
@@ -161,78 +174,125 @@ const Home = () => {
           </div>
           <div className="flex items-center justify-center flex-wrap gap-4">
             <AnimatedContent
-                distance={100}
-                direction="vertical"
-                reverse={false}
-                duration={1.2}
-                threshold={0.1}
-                delay={0}
-              >
-            <div className="relative free h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8">
-              <div className="">
-                <h2 className="text-xl font-bold">Free</h2>
-                <p className="text-lg font-light text-gray-500">
-                  Basic journaling & habit tracking
-                </p>
-              </div>
-              <div className="mt-10">
-                <p>
-                  <span className="text-4xl font-bold">₹0</span>/month
-                </p>
-                <div className="mt-4">
-                  {free.map((item, index) => (
-                    <div
-                      className="flex item-start justify-start gap-2"
-                      key={index}
-                    >
-                      <div className="flex items-center justify-center">
-                        <Check className="size-4" />
-                      </div>
-                      <div className="text-lg font-light text-gray-500">
-                        {item}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <Link
-                to="/sign-up"
-                className="absolute cursor-pointer bottom-10 right-[25%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold"
-              >
-                Get Started Free
-              </Link>
-            </div>
-            </AnimatedContent>
-            <AnimatedContent
-                distance={100}
-                direction="vertical"
-                reverse={false}
-                duration={1.2}
-                threshold={0.1}
-                delay={0}
-              >
-            <div className="relative">
-              <GlowEffect
-                colors={["#0894FF", "#C959DD", "#FF2E54", "#FF9004"]}
-                mode="rotate"
-                blur="medium"
-              />
-              <div className="relative pro bg-black text-white h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8 overflow-hidden">
-                <p className="absolute text-[12px] top-3 bg-white text-black px-3 py-2 right-3 rounded-full">
-                  Most Popular
-                </p>
+              distance={100}
+              direction="vertical"
+              reverse={false}
+              duration={1.2}
+              threshold={0.1}
+              delay={0}
+            >
+              <div className="relative free h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8 shadow-md">
                 <div className="">
-                  <h2 className="text-xl font-bold">Pro</h2>
+                  <h2 className="text-xl font-bold">Free</h2>
                   <p className="text-lg font-light text-gray-500">
-                    Unlock full potential with AI insights
+                    Basic journaling & habit tracking
                   </p>
                 </div>
                 <div className="mt-10">
                   <p>
-                    <span className="text-4xl font-bold">₹199</span>/month
+                    <span className="text-4xl font-bold">₹0</span>/month
                   </p>
                   <div className="mt-4">
-                    {pro.map((item, index) => (
+                    {free.map((item, index) => (
+                      <div
+                        className="flex item-start justify-start gap-2"
+                        key={index}
+                      >
+                        <div className="flex items-center justify-center">
+                          <Check className="size-4" />
+                        </div>
+                        <div className="text-lg font-light text-gray-500">
+                          {item}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <Link
+                  to="/sign-up"
+                  className="absolute cursor-pointer bottom-10 right-[25%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold"
+                >
+                  Get Started Free
+                </Link>
+              </div>
+            </AnimatedContent>
+            <AnimatedContent
+              distance={100}
+              direction="vertical"
+              reverse={false}
+              duration={1.2}
+              threshold={0.1}
+              delay={0}
+            >
+              <div className="relative">
+                <GlowEffect
+                  colors={["#0894FF", "#C959DD", "#FF2E54", "#FF9004"]}
+                  mode="rotate"
+                  blur="medium"
+                />
+                <div className="relative pro bg-black text-white h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8 overflow-hidden">
+                  <p className="absolute text-[12px] top-3 bg-white text-black px-3 py-2 right-3 rounded-full">
+                    Most Popular
+                  </p>
+                  <div className="">
+                    <h2 className="text-xl font-bold">Pro</h2>
+                    <p className="text-lg font-light text-gray-500">
+                      Unlock full potential with AI insights
+                    </p>
+                  </div>
+                  <div className="mt-10">
+                    <p>
+                      <span className="text-4xl font-bold">₹199</span>/month
+                    </p>
+                    <div className="mt-4">
+                      {pro.map((item, index) => (
+                        <div
+                          className="flex item-start justify-start gap-2"
+                          key={index}
+                        >
+                          <div className="flex items-center justify-center">
+                            <Check className="size-4" />
+                          </div>
+                          <div className="text-lg font-light text-gray-500">
+                            {item}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <Link
+                    to="/sign-up"
+                    className="absolute cursor-pointer bottom-10 right-[33%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold"
+                  >
+                    Choose Pro
+                  </Link>
+                </div>
+              </div>
+            </AnimatedContent>
+            <AnimatedContent
+              distance={100}
+              direction="vertical"
+              reverse={false}
+              duration={1.2}
+              threshold={0.1}
+              delay={0}
+            >
+              <div className="relative annual h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8 shadow-md">
+                <div className="">
+                  <h2 className="text-xl font-bold">Annual</h2>
+                  <p className="text-lg font-light text-gray-500">
+                    Save with yearly billing
+                  </p>
+                </div>
+                <div className="mt-10">
+                  <p>
+                    <span className="text-4xl font-bold">₹1990</span>/year
+                    <p className="text-gray-500 text-sm">
+                      (Equivalent to ₹165/month)
+                    </p>
+                  </p>
+                  <div className="mt-4">
+                    {annual.map((item, index) => (
                       <div
                         className="flex item-start justify-start gap-2"
                         key={index}
@@ -251,61 +311,71 @@ const Home = () => {
                   to="/sign-up"
                   className="absolute cursor-pointer bottom-10 right-[33%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold"
                 >
-                  Choose Pro
+                  Go Annual
                 </Link>
               </div>
-            </div>
-            </AnimatedContent>
-            <AnimatedContent
-                distance={100}
-                direction="vertical"
-                reverse={false}
-                duration={1.2}
-                threshold={0.1}
-                delay={0}
-              >
-            <div className="relative annual h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8">
-              <div className="">
-                <h2 className="text-xl font-bold">Annual</h2>
-                <p className="text-lg font-light text-gray-500">
-                  Save with yearly billing
-                </p>
-              </div>
-              <div className="mt-10">
-                <p>
-                  <span className="text-4xl font-bold">₹1990</span>/year
-                  <p className="text-gray-500 text-sm">
-                    (Equivalent to ₹165/month)
-                  </p>
-                </p>
-                <div className="mt-4">
-                  {annual.map((item, index) => (
-                    <div
-                      className="flex item-start justify-start gap-2"
-                      key={index}
-                    >
-                      <div className="flex items-center justify-center">
-                        <Check className="size-4" />
-                      </div>
-                      <div className="text-lg font-light text-gray-500">
-                        {item}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <Link
-                to="/sign-up"
-                className="absolute cursor-pointer bottom-10 right-[33%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold"
-              >
-                Go Annual
-              </Link>
-            </div>
             </AnimatedContent>
           </div>
         </div>
-        <div className="footer h-16 border-t-[1px] border-gray-300 flex items-center justify-center font-light">
-          © 2025 Reflecty
+        <div className="faqs h-[70vh] mt-10 mb-40 md:mb-10 flex items-center justify-start flex-col">
+          <h1 className="text-3xl font-bold text-center">Faqs</h1>
+          <div className="w-full md:w-3/4 px-8 mt-8">
+            <Accordion
+              className="flex w-full flex-col divide-y divide-gray-200 dark:divide-zinc-700 "
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              variants={{
+                expanded: {
+                  opacity: 1,
+                  scale: 1,
+                },
+                collapsed: {
+                  opacity: 0,
+                  scale: 0.7,
+                },
+              }}
+            >
+              {faqs.map((item, index)=>(
+                <AccordionItem value={index} className="py-2" key={index}>
+                <AccordionTrigger className="w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 cursor-pointer">
+                  <div className="flex items-center">
+                    <ChevronRight className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:rotate-90 dark:text-zinc-50" />
+                    <div className="ml-2 text-zinc-950 dark:text-zinc-50 text-lg md:text-xl">
+                      {item.question}
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="origin-left cursor-pointer">
+                  <p className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
+                    {item.ans}
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+              ))}
+              
+              <AccordionItem value="getting-started" className="py-2">
+                <AccordionTrigger className="w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50">
+                  <div className="flex items-center">
+                    <ChevronRight className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:rotate-90 dark:text-zinc-50" />
+                    <div className="ml-2 text-zinc-950 dark:text-zinc-50 text-lg">
+                      How do I start with Motion-Primitives?
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="origin-left">
+                  <p className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
+                    Kick off your experience by setting up Motion-Primitives.
+                    This section covers the basics of installation and how to
+                    add animations to your projects. You’ll get familiar with
+                    the initial setup and the core features quickly.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+              
+            </Accordion>
+          </div>
+        </div>
+        <div className="footer h-16 border-t-[1px] border-gray-300 flex items-center justify-center font-light mt-40 md:mt-20">
+          © 2025 Reflecty <Leaf className="h-[16px] w-[16px] ml-2" />
         </div>
       </div>
     </>
