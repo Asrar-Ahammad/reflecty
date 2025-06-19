@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Magnet from "@/blocks/Animations/Magnet/Magnet";
 import { TextEffect } from "../../components/motion-primitives/text-effect";
 import { GlowEffect } from "../../components/motion-primitives/glow-effect";
@@ -85,6 +86,12 @@ const annual = [
 
 
 const Home = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  useEffect(() => {
+    setIsDarkTheme(document.body.classList.contains("dark"));
+  }, []);
+
   return (
     <>
       <div className="main">
@@ -93,7 +100,7 @@ const Home = () => {
           <div style={{ position: "relative" }} className="h-fit">
             <SplitText
               text="Your personal growth companion"
-              className="text-3xl md:text-4xl font-semibold"
+              className={`text-3xl md:text-4xl font-semibold ${isDarkTheme ? "text-white" : "text-black"}`}
               delay={100}
               duration={2.5}
               ease="elastic.out(1,0.3)"
@@ -108,7 +115,7 @@ const Home = () => {
           <TextEffect
             per="char"
             preset="fade"
-            className="text-xl text-center w-full md:w-1/2 text-gray-500"
+            className={`text-xl text-center w-full md:w-1/2 ${isDarkTheme ? "text-white/80" : "text-gray-700"}`}
           >
             Reflectly is your safe space to journal, track habits, and get
             AI-powered insights for a more productive and consistent you.
@@ -317,11 +324,11 @@ const Home = () => {
             </AnimatedContent>
           </div>
         </div>
-        <div className="faqs h-[70vh] mt-10 mb-40 md:mb-10 flex items-center justify-start flex-col">
+        <div className="faqs h-[70vh] mt-10 md:mb-10 flex items-center justify-start flex-col">
           <h1 className="text-3xl font-bold text-center">Faqs</h1>
           <div className="w-full md:w-3/4 px-8 mt-8">
             <Accordion
-              className="flex w-full flex-col divide-y divide-gray-200 dark:divide-zinc-700 "
+              className="flex w-full flex-col divide-y divide-gray-200 dark:divide-zinc-700 my-6"
               transition={{ type: "spring", stiffness: 120, damping: 20 }}
               variants={{
                 expanded: {
@@ -351,26 +358,6 @@ const Home = () => {
                 </AccordionContent>
               </AccordionItem>
               ))}
-              
-              <AccordionItem value="getting-started" className="py-2">
-                <AccordionTrigger className="w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50">
-                  <div className="flex items-center">
-                    <ChevronRight className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:rotate-90 dark:text-zinc-50" />
-                    <div className="ml-2 text-zinc-950 dark:text-zinc-50 text-lg">
-                      How do I start with Motion-Primitives?
-                    </div>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="origin-left">
-                  <p className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
-                    Kick off your experience by setting up Motion-Primitives.
-                    This section covers the basics of installation and how to
-                    add animations to your projects. You’ll get familiar with
-                    the initial setup and the core features quickly.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              
             </Accordion>
           </div>
         </div>
