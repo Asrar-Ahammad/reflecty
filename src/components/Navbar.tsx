@@ -25,7 +25,7 @@ function Navbar() {
             <div id="glass-navbar" className="flex items-center justify-between w-[90%] md:w-[50vw] p-4 rounded-full bg-clip-padding backdrop-filter backdrop-blur-md bg-white/10 border border-gray-150 fixed top-4 md:right-[25%]">
               <Link to="/" className="flex items-center justify-center gap-2">
                 <Leaf className="size-6 md:size-8" />
-                <p className={`font-semibold text-lg md:text-xl ${isDarkBackground ? "text-white" : "text-black"}`}>
+                <p className={`font-semibold text-lg md:text-xl ${isDarkBackground ? "text-black" : "text-black"}`}>
                   Reflecty
                 </p>
               </Link>
@@ -35,7 +35,7 @@ function Navbar() {
                 </Link>
                 <Link
                   to="/login"
-                  className="bg-black text-white text-sm p-2 px-3 rounded-full"
+                  className="bg-black text-black text-sm p-2 px-3 rounded-full"
                 >
                   Login
                 </Link>
