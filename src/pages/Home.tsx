@@ -362,7 +362,7 @@ const Home = () => {
           </div>
         </div>
         <div className="footer h-16 border-t-[1px] border-gray-300 flex items-center justify-center font-light mt-40 md:mt-20">
-          © 2025 Reflecty <Leaf className="h-[16px] w-[16px] ml-2" />
+          © 2025 <Leaf className="h-[16px] w-[16px] ml-2" /> Reflecty
         </div>
       </div>
     </>
