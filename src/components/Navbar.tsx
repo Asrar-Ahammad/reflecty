@@ -35,7 +35,7 @@ function Navbar() {
                 </Link>
                 <Link
                   to="/login"
-                  className="bg-black text-black text-sm p-2 px-3 rounded-full"
+                  className="bg-black text-white text-sm p-2 px-3 rounded-full"
                 >
                   Login
                 </Link>
