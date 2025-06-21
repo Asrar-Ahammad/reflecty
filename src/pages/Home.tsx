@@ -3,6 +3,7 @@ import Magnet from "@/blocks/Animations/Magnet/Magnet";
 import { TextEffect } from "../../components/motion-primitives/text-effect";
 import { GlowEffect } from "../../components/motion-primitives/glow-effect";
 import SplitText from "@/blocks/TextAnimations/SplitText/SplitText";
+import { Spotlight } from "../../components/motion-primitives/spotlight";
 import {
   Brain,
   Check,
@@ -32,36 +33,42 @@ const cardData = [
     heading: "Guided Journaling",
     description:
       "Start your day with intention or reflect on your experiences with prompts tailored to your goals.",
+    color: "bg-emerald-400",
   },
   {
     icon: <Settings />,
     heading: "Habit Tracking",
     description:
       "Build consistency with our intuitive habit tracker. Visualize your progress and stay motivated.",
+    color: "bg-pink-400",
   },
   {
     icon: <Network />,
     heading: "AI-Powered Insights",
     description:
       "Receive personalized feedback and insights based on your journal entries and habit patterns.",
+    color: "bg-sky-400",
   },
   {
     icon: <Shield />,
     heading: "Secure & Private",
     description:
       "Your thoughts are safe with us. We prioritize your privacy with end-to-end encryption.",
+    color: "bg-emerald-400",
   },
   {
     icon: <Brain />,
     heading: "Mood Tracking",
     description:
       "Log your mood daily to understand patterns and triggers, helping you manage emotional well-being.",
+    color:"bg-sky-400",
   },
   {
     icon: <Flower />,
     heading: "Productivity Stats",
     description:
       "Get detailed statistics on your productivity, consistency, and personal growth journey.",
+    color:"bg-pink-400",
   },
 ];
 
@@ -84,7 +91,6 @@ const annual = [
   "Early access to new features",
 ];
 
-
 const Home = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -100,7 +106,9 @@ const Home = () => {
           <div style={{ position: "relative" }} className="h-fit">
             <SplitText
               text="Your personal growth companion"
-              className={`text-3xl md:text-4xl font-semibold ${isDarkTheme ? "text-white" : "text-black"}`}
+              className={`text-3xl md:text-4xl font-semibold ${
+                isDarkTheme ? "text-white" : "text-black"
+              }`}
               delay={100}
               duration={2.5}
               ease="elastic.out(1,0.3)"
@@ -115,7 +123,9 @@ const Home = () => {
           <TextEffect
             per="char"
             preset="fade"
-            className={`text-xl text-center w-full md:w-1/2 ${isDarkTheme ? "text-white/80" : "text-gray-700"}`}
+            className={`text-xl text-center w-full md:w-1/2 ${
+              isDarkTheme ? "text-white/80" : "text-gray-700"
+            }`}
           >
             Reflectly is your safe space to journal, track habits, and get
             AI-powered insights for a more productive and consistent you.
@@ -151,9 +161,17 @@ const Home = () => {
                 delay={0}
               >
                 <div
-                  className="card w-fit h-[250px] border-[1px] border-gray-300 p-6 flex flex-col items-start justify-start gap-4 rounded-xl select-none"
+                  className="card relative w-fit h-[250px] border-[1px] border-gray-300 p-6 flex flex-col items-start justify-start gap-4 rounded-xl select-none hover:shadow-xl duration-200 transition-all"
                   key={index}
                 >
+                  <Spotlight
+                    className={item.color}
+                    size={64}
+                    springOptions={{
+                      bounce: 0.3,
+                      duration: 0.1,
+                    }}
+                  />
                   <div className="icon bg-black p-2 text-white rounded-full w-fit">
                     {item.icon}
                   </div>
@@ -217,7 +235,7 @@ const Home = () => {
                 </div>
                 <Link
                   to="/sign-up"
-                  className="absolute cursor-pointer bottom-10 right-[25%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold"
+                  className="absolute cursor-pointer bottom-10 right-[25%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold hover:bg-black hover:text-white duration-200 transition-all"
                 >
                   Get Started Free
                 </Link>
@@ -236,14 +254,15 @@ const Home = () => {
                   colors={["#0894FF", "#C959DD", "#FF2E54", "#FF9004"]}
                   mode="rotate"
                   blur="medium"
+                  duration={20}
                 />
-                <div className="relative pro bg-black text-white h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8 overflow-hidden">
+                <div className="relative pro text-white h-[60vh] flex flex-col items-start justify-start border-[1px] border-gray-300 rounded-lg p-8 overflow-hidden">
                   <p className="absolute text-[12px] top-3 bg-white text-black px-3 py-2 right-3 rounded-full">
                     Most Popular
                   </p>
                   <div className="">
                     <h2 className="text-xl font-bold">Pro</h2>
-                    <p className="text-lg font-light text-gray-500">
+                    <p className="text-lg font-light text-white">
                       Unlock full potential with AI insights
                     </p>
                   </div>
@@ -260,7 +279,7 @@ const Home = () => {
                           <div className="flex items-center justify-center">
                             <Check className="size-4" />
                           </div>
-                          <div className="text-lg font-light text-gray-500">
+                          <div className="text-lg font-light text-white">
                             {item}
                           </div>
                         </div>
@@ -269,7 +288,7 @@ const Home = () => {
                   </div>
                   <Link
                     to="/sign-up"
-                    className="absolute cursor-pointer bottom-10 right-[33%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold"
+                    className="absolute cursor-pointer bottom-10 right-[33%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold hover:bg-black hover:text-white duration-200 transition-all"
                   >
                     Choose Pro
                   </Link>
@@ -316,7 +335,7 @@ const Home = () => {
                 </div>
                 <Link
                   to="/sign-up"
-                  className="absolute cursor-pointer bottom-10 right-[33%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold"
+                  className="absolute cursor-pointer bottom-10 right-[33%] border-[1px] border-gray-300 rounded-md w-fit px-3 py-2 font-semibold hover:bg-black hover:text-white duration-200 transition-all"
                 >
                   Go Annual
                 </Link>
@@ -341,22 +360,22 @@ const Home = () => {
                 },
               }}
             >
-              {faqs.map((item, index)=>(
+              {faqs.map((item, index) => (
                 <AccordionItem value={index} className="py-2" key={index}>
-                <AccordionTrigger className="w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 cursor-pointer">
-                  <div className="flex items-center">
-                    <ChevronRight className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:rotate-90 dark:text-zinc-50" />
-                    <div className="ml-2 text-zinc-950 dark:text-zinc-50 text-lg md:text-xl">
-                      {item.question}
+                  <AccordionTrigger className="w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 cursor-pointer">
+                    <div className="flex items-center">
+                      <ChevronRight className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:rotate-90 dark:text-zinc-50" />
+                      <div className="ml-2 text-zinc-950 dark:text-zinc-50 text-lg md:text-xl">
+                        {item.question}
+                      </div>
                     </div>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="origin-left cursor-pointer">
-                  <p className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
-                    {item.ans}
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
+                  </AccordionTrigger>
+                  <AccordionContent className="origin-left cursor-pointer">
+                    <p className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
+                      {item.ans}
+                    </p>
+                  </AccordionContent>
+                </AccordionItem>
               ))}
             </Accordion>
           </div>

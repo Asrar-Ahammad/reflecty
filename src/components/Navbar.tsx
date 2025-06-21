@@ -21,8 +21,9 @@ function Navbar() {
     <>
       
         <nav className="relative z-50">
+          
           <div className="w-full flex items-center justify-center">
-            <div id="glass-navbar" className="flex items-center justify-between w-[90%] md:w-[50vw] p-4 rounded-full bg-clip-padding backdrop-filter backdrop-blur-md bg-white/10 border border-gray-150 fixed top-4 md:right-[25%]">
+            <div id="glass-navbar" className="flex items-center justify-between w-[90%] md:w-[50vw] p-4 rounded-full  bg-white/10 border border-gray-150 bg-clip-padding backdrop-filter backdrop-blur-sm fixed top-4 md:right-[25%]">
               <Link to="/" className="flex items-center justify-center gap-2">
                 <Leaf className="size-6 md:size-8" />
                 <p className={`font-semibold text-lg md:text-xl ${isDarkBackground ? "text-black" : "text-black"}`}>
