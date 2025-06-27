@@ -1,3 +1,4 @@
+
 # Reflecty
 
 > Your personal growth companion — journal, track habits, and gain AI-powered insights for a more consistent and mindful you.
@@ -23,7 +24,7 @@ Reflecty is a self-improvement web app designed to help you stay on track with y
 - **Frontend**: React, Vite, TypeScript
 - **Styling**: Tailwind CSS
 - **UI Components**: ShadCN, Framer Motion
-- **State Management**: Zustand
+<!-- - **State Management**: Zustand -->
 - **Routing**: React Router
 - **Icons**: Lucide
 - **Animation**: Framer Motion, Motion Primitives
